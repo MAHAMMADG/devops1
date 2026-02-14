@@ -1,0 +1,7 @@
+function bmi(){
+    let weight=70;
+    let height=1.75;
+    let result=weight/(height*height);
+    alert("BMI: "+result.toFixed(2));
+}
+
