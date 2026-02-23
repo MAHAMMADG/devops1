@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vegetable-deployment
+  namespace: mahi-ns
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: vegetableapp
+  template:
+    metadata:
+      labels:
+        app: vegetableapp
+    spec:
+      containers:
+      - name: vegetable-container
+        image: mahammad7/vegetable-app:v1.0.0
+        ports:
+        - containerPort: 3000 
+        env:
+        - name: MONGODB_URI
+          valueFrom:
+            configMapKeyRef:
+              name: vegetable-app-config
+              key: MONGODB_URI
+
